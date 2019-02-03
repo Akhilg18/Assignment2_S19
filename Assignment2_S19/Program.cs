@@ -9,28 +9,31 @@ namespace Assignment2_S19
         {
             // left rotation
             Console.WriteLine("Left Rotation");
-            int d = 4;
+            int d = 5;
             int[] a = { 1, 2, 3, 4, 5 };
             int[] r = rotLeft(a, d);
             displayArray(r);
 
+           /* Console.ReadKey();
             // Maximum toys
             Console.WriteLine("\n\nMaximum toys");
             int k = 50;
             int[] prices = { 1, 12, 5, 111, 200, 1000, 10 };
-            Console.WriteLine(maximumToys(prices, k));
+            Console.WriteLine(maximumToys(prices, k));*/
 
             // Balanced sums
             Console.WriteLine("\n\nBalanced sums");
-            List<int> arr = new List<int> { 1, 2, 3 };
+            List<int> arr = new List<int> { 2,0 };
             Console.WriteLine(balancedSums(arr));
+
 
             // Missing numbers
             Console.WriteLine("\n\nMissing numbers");
             int[] arr1 = { 203, 204, 205, 206, 207, 208, 203, 204, 205, 206};
-            int[] brr = {203, 204, 204, 205, 206, 207, 205, 208, 203, 206, 205, 206, 204};
+            int[] brr = {203, 204, 204,204, 205, 206, 207, 205, 208, 203, 206, 205, 206, 204};
             int[] r2 = missingNumbers(arr1, brr);
             displayArray(r2);
+
 
             // grading students
             Console.WriteLine("\n\nGrading students");
@@ -40,8 +43,11 @@ namespace Assignment2_S19
 
             // find the median
             Console.WriteLine("\n\nFind the median");
-            int[] arr2 = { 0, 1, 2, 4, 6, 5, 3};
+            int[] arr2 = { 0, 1, 2, 4,7, 6, 5, 3};
             Console.WriteLine(findMedian(arr2));
+
+            Console.ReadKey();
+
 
             // closest numbers
             Console.WriteLine("\n\nClosest numbers");
@@ -62,10 +68,43 @@ namespace Assignment2_S19
             }
         }
 
+        //function to sort the array
+        static int[] sortthearray(int[] arr)
+        {
+            int temp = 0;
+            for (int i = 0; i < arr.Length - 1; i++)
+            {
+                for (int j = 0; j < arr.Length - i - 1; j++)
+                {
+                    if (arr[j] > arr[j + 1])
+                    {
+                        temp = arr[j];
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = temp;
+                    }
+                }
+
+            }
+            return arr;
+        }
         // Complete the rotLeft function below.
         static int[] rotLeft(int[] a, int d)
         {
-            return new int[] {};
+            int n = a.Length;
+            d = d % 5;
+            int[] b = new int[a.Length];
+            for (int i = 0; i < a.Length; i++)
+            {
+                if ((i - d) < 0)
+                {
+                    b[n + i - d] = a[i];
+                }
+                else
+                {
+                    b[i - d] = a[i];
+                }
+            }
+            return b;
         }
 
         // Complete the maximumToys function below.
@@ -77,12 +116,57 @@ namespace Assignment2_S19
         // Complete the balancedSums function below.
         static string balancedSums(List<int> arr)
         {
-            return "";
+            for(int i=0;i<arr.Count;i++)
+            {
+                int leftsum = 0;
+                int rightsum = 0;
+                for(int y=0;y<i;y++)
+                {
+                    leftsum = arr[y] + leftsum;
+                }
+                for(int z=i+1;z<arr.Count;z++)
+                {
+                    rightsum = rightsum + arr[z];
+                }
+                if(leftsum==rightsum)
+                {
+                    return "YES";
+                }
+            }
+            return "NO";
         }
 
         // Complete the missingNumbers function below.
         static int[] missingNumbers(int[] arr, int[] brr)
         {
+            int i = 0;
+            int j = 0;
+            int k = 0;
+            int currentnumber;
+            int missingnumber;
+            Array.Sort(arr);
+            Array.Sort(brr);
+            int[] c = new int[brr.Length];
+            while(i <brr.Length)
+                {
+                currentnumber = arr[i];
+                while(j<arr.Length)
+                {
+                    if (brr[i] == arr[j])
+                    {
+                        i++;
+                        j++;
+                    }
+                    else
+                    {
+                        missingnumber = brr[i];
+                        Console.WriteLine(missingnumber);
+                        k++;
+                        i++;
+                    }
+                }
+                }
+            
             return new int[] { };
         }
 
@@ -96,7 +180,19 @@ namespace Assignment2_S19
         // Complete the findMedian function below.
         static int findMedian(int[] arr)
         {
-            return 0;
+            arr = sortthearray(arr);
+            
+            if(arr.Length%2==0)
+            {
+                int g = arr.Length / 2;
+                return (arr[g] + arr[g - 1]) / 2;
+            }
+            else
+            {
+                int g = arr.Length / 2;
+                return arr[g];
+            }
+            
         }
 
         // Complete the closestNumbers function below.
