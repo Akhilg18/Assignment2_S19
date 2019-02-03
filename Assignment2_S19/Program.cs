@@ -9,17 +9,16 @@ namespace Assignment2_S19
         {
             // left rotation
             Console.WriteLine("Left Rotation");
-            int d = 5;
+            int d = 4;
             int[] a = { 1, 2, 3, 4, 5 };
             int[] r = rotLeft(a, d);
             displayArray(r);
 
-           /* Console.ReadKey();
             // Maximum toys
             Console.WriteLine("\n\nMaximum toys");
             int k = 50;
             int[] prices = { 1, 12, 5, 111, 200, 1000, 10 };
-            Console.WriteLine(maximumToys(prices, k));*/
+            Console.WriteLine(maximumToys(prices, k));
 
             // Balanced sums
             Console.WriteLine("\n\nBalanced sums");
@@ -30,7 +29,7 @@ namespace Assignment2_S19
             // Missing numbers
             Console.WriteLine("\n\nMissing numbers");
             int[] arr1 = { 203, 204, 205, 206, 207, 208, 203, 204, 205, 206};
-            int[] brr = {203, 204, 204,204, 205, 206, 207, 205, 208, 203, 206, 205, 206, 204};
+            int[] brr = {203, 204, 204, 205, 206, 207, 205, 208, 203, 206, 205, 206, 204};
             int[] r2 = missingNumbers(arr1, brr);
             displayArray(r2);
 
@@ -45,9 +44,6 @@ namespace Assignment2_S19
             Console.WriteLine("\n\nFind the median");
             int[] arr2 = { 0, 1, 2, 4,7, 6, 5, 3};
             Console.WriteLine(findMedian(arr2));
-
-            Console.ReadKey();
-
 
             // closest numbers
             Console.WriteLine("\n\nClosest numbers");
