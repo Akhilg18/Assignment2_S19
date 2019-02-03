@@ -151,6 +151,28 @@ namespace Assignment2_S19
         // Complete the dayOfProgrammer function below.
         static string dayOfProgrammer(int year)
         {
+            try
+            {
+                string dd;
+                string mm;
+                if (year / 4 == 0)
+                {
+                     dd = "12.";
+                     mm = "09.";
+                    return (String.Concat(dd, mm, year));
+                }
+                else
+                {
+                    dd = "13.";
+                    mm = "09.";
+                    return (String.Concat(dd, mm, year));
+                }
+
+            }
+            catch
+            {
+                Console.WriteLine("Exception occured while computing gradingStudents()");
+            }
             return "";
         }
     }
