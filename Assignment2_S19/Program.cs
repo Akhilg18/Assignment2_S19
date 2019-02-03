@@ -22,14 +22,14 @@ namespace Assignment2_S19
 
             // Balanced sums
             Console.WriteLine("\n\nBalanced sums");
-            List<int> arr = new List<int> { 1,2,3 };
+            List<int> arr = new List<int> { 1, 2, 3 };
             Console.WriteLine(balancedSums(arr));
 
 
             // Missing numbers
             Console.WriteLine("\n\nMissing numbers");
-            int[] arr1 = { 203, 204, 205, 206, 207, 208, 203, 204, 205, 206};
-            int[] brr = { 203, 204, 204, 205, 206, 207, 205, 208, 203, 206, 205, 206, 204};
+            int[] arr1 = { 203, 204, 205, 206, 207, 208, 203, 204, 205, 206 };
+            int[] brr = { 203, 204, 204, 205, 206, 207, 205, 208, 203, 206, 205, 206, 204 };
             int[] r2 = missingNumbers(arr1, brr);
             displayArray(r2);
 
