@@ -88,7 +88,29 @@ namespace Assignment2_S19
         // Complete the rotLeft function below.
         static int[] rotLeft(int[] a, int d)
         {
-            return new int[] {};
+            try
+            {
+                int n = a.Length;
+                d = d % 5;
+                int[] b = new int[a.Length];
+                for (int i = 0; i < a.Length; i++)
+                {
+                    if ((i - d) < 0)
+                    {
+                        b[n + i - d] = a[i];
+                    }
+                    else
+                    {
+                        b[i - d] = a[i];
+                    }
+                }
+                return b;
+            }
+            catch
+            {
+             Console.WriteLine("Exception occured while computing rotLeft()");
+            }
+            return null;
         }
 
         // Complete the maximumToys function below.
@@ -97,7 +119,8 @@ namespace Assignment2_S19
             try
             {
                 int maxToys = 0;
-                Array.Sort(prices);
+                // Array.Sort(prices);
+                prices = sortthearray(prices);
                 for (int i = 0; i < prices.Length; i++)
                 {
                     if (prices[i] < k)
@@ -146,8 +169,10 @@ namespace Assignment2_S19
             int k = 0;
             int currentnumber;
             int missingnumber;
-            Array.Sort(arr);
-            Array.Sort(brr);
+            //Array.Sort(arr);
+            // Array.Sort(brr);
+            arr = sortthearray(arr);
+            brr = sortthearray(brr);
             int[] c = new int[brr.Length];
             while(i <brr.Length)
                 {
