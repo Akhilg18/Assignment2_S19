@@ -39,7 +39,6 @@ namespace Assignment2_S19
             int[] grades = { 73, 67, 38, 33 };
             int[] r3 = gradingStudents(grades);
             displayArray(r3);
-
             // find the median
             Console.WriteLine("\n\nFind the median");
             int[] arr2 = { 0, 1, 2, 4,7, 6, 5, 3};
