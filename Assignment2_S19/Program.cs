@@ -141,24 +141,35 @@ namespace Assignment2_S19
         // Complete the balancedSums function below.
         static string balancedSums(List<int> arr)
         {
-            for(int i=0;i<arr.Count;i++)
+            try
             {
-                int leftsum = 0;
-                int rightsum = 0;
-                for(int y=0;y<i;y++)
+                for (int i = 0; i < arr.Count; i++)
                 {
-                    leftsum = arr[y] + leftsum;
+
+                    int leftsum = 0;
+                    int rightsum = 0;
+                    for (int y = 0; y < i; y++)
+                    {
+                        leftsum = arr[y] + leftsum;
+                    }
+                    for (int z = i + 1; z < arr.Count; z++)
+                    {
+                        rightsum = rightsum + arr[z];
+                    }
+                    if (leftsum == rightsum)
+                    {
+                        return "YES";
+                    }
                 }
-                for(int z=i+1;z<arr.Count;z++)
-                {
-                    rightsum = rightsum + arr[z];
-                }
-                if(leftsum==rightsum)
-                {
-                    return "YES";
-                }
+                return "NO";
+
             }
-            return "NO";
+            catch
+            {
+                Console.WriteLine("Exception occured while computing balanced sums");
+                return "EXCEPTION";
+
+            }
         }
 
         // Complete the missingNumbers function below.
@@ -229,19 +240,26 @@ namespace Assignment2_S19
         // Complete the findMedian function below.
         static int findMedian(int[] arr)
         {
-            arr = sortthearray(arr);
-            
-            if(arr.Length%2==0)
+            try
             {
-                int g = arr.Length / 2;
-                return (arr[g] + arr[g - 1]) / 2;
+                arr = sortthearray(arr);
+
+                if (arr.Length % 2 == 0)
+                {
+                    int g = arr.Length / 2;
+                    return (arr[g] + arr[g - 1]) / 2;
+                }
+                else
+                {
+                    int g = arr.Length / 2;
+                    return arr[g];
+                }
             }
-            else
+            catch
             {
-                int g = arr.Length / 2;
-                return arr[g];
+                Console.WriteLine("Error occured while computing median");
             }
-            
+            return -1;
         }
 
         // Complete the closestNumbers function below.
