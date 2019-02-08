@@ -188,7 +188,7 @@ namespace Assignment2_S19
             }
         }
 
-        // Complete the missingNumbers function below.
+        // Complete the missingNumbers function below
         static int[] missingNumbers(int[] arr, int[] brr)
         {
             int i = 0;
