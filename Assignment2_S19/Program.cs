@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Assignment2_S19
 {
@@ -92,18 +93,21 @@ namespace Assignment2_S19
         static int[] rotLeft(int[] a, int d)
         {
             try
-            {
+            {   //initilizing n with the length of the array.
                 int n = a.Length;
                 d = d % 5;
+                //create a new array to return the left displaced elements.
                 int[] b = new int[a.Length];
+                //looping through the array elements.
                 for (int i = 0; i < a.Length; i++)
-                {
+                {   // checking if the value of i-d is less than zero
                     if ((i - d) < 0)
                     {
+                        // if yes assign the value to the rray b at position (n+i-d)
                         b[n + i - d] = a[i];
                     }
                     else
-                    {
+                    {   // if no assign the value at the position (i-d) in the array b.
                         b[i - d] = a[i];
                     }
                 }
@@ -158,20 +162,23 @@ namespace Assignment2_S19
         static string balancedSums(List<int> arr)
         {
             try
-            {
+            {   //looping through the array
                 for (int i = 0; i < arr.Count; i++)
                 {
 
                     int leftsum = 0;
                     int rightsum = 0;
+                    //loop to calculate the left sum at point of array
                     for (int y = 0; y < i; y++)
-                    {
+                    {   //saving the left sum in the variable leftsum
                         leftsum = arr[y] + leftsum;
                     }
+                    //loop to calculate the right sum at a point of array
                     for (int z = i + 1; z < arr.Count; z++)
                     {
+                        //saving the right sum in the variable rightsum
                         rightsum = rightsum + arr[z];
-                    }
+                    } //checking if left sum equal to right sum
                     if (leftsum == rightsum)
                     {
                         return "YES";
@@ -191,37 +198,68 @@ namespace Assignment2_S19
         // Complete the missingNumbers function below
         static int[] missingNumbers(int[] arr, int[] brr)
         {
+            // intializing the temparory varibles.
             int i = 0;
             int j = 0;
             int k = 0;
+            //declaring current number and missing number
             int currentnumber;
             int missingnumber;
-            //Array.Sort(arr);
-            // Array.Sort(brr);
+
+            //sorting the arrays arr and brr.
             arr = sortthearray(arr);
             brr = sortthearray(brr);
-            int[] c = new int[brr.Length];
-            while(i <brr.Length)
+            //creating a new array to store the missing numbers.
+
+
+            List<int> list = new List<int>();
+            try
+            {
+                while (i < brr.Length)
                 {
-                currentnumber = arr[i];
-                while(j<arr.Length)
-                {
+                    //Console.WriteLine(i);
+                    // Console.WriteLine(brr[i] + "  " + arr[i]);
+
                     if (brr[i] == arr[j])
                     {
                         i++;
                         j++;
+                        if (j == arr.Length)
+                        {
+                            while (i < brr.Length)
+                            {
+                                list.Add(brr[i]);
+                                i++;
+
+                            }
+                        }
                     }
                     else
                     {
                         missingnumber = brr[i];
-                        Console.WriteLine(missingnumber);
-                        k++;
+                        list.Add(missingnumber);
                         i++;
                     }
+
+
                 }
-                }
-            
-            return new int[] { };
+            }
+            catch
+            {
+
+            }
+            int[] c = new int[list.Count];
+            int z = 0;
+            foreach (int num in list)
+            {
+                c[z] = num;
+                z++;
+
+            }
+            int[] d = new int[c.Length];
+            d = c.Distinct().ToArray();
+
+            return d;
         }
 
 
@@ -274,16 +312,16 @@ namespace Assignment2_S19
         static int findMedian(int[] arr)
         {
             try
-            {
+            {   //sort the array
                 arr = sortthearray(arr);
-
+                //checking if the array is even
                 if (arr.Length % 2 == 0)
-                {
+                {   //if it is even then average the middle 2 elements
                     int g = arr.Length / 2;
                     return (arr[g] + arr[g - 1]) / 2;
                 }
                 else
-                {
+                {   //if the array is odd then return the middle element.
                     int g = arr.Length / 2;
                     return arr[g];
                 }
