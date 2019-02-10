@@ -1,4 +1,13 @@
-﻿using System;
+﻿/* Self Reflection from Assignment 2 
+ * learnt how to use functions
+ * learnt how to use arrys
+ * learnt about checking the conditions based on the array values
+ * learnt about the sorting algorithms
+ * learnt how to cover different use cases based on different input cnoditions
+ * leant how to checkout the team code and sync the code and push the final code to repository
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
