@@ -363,6 +363,7 @@ namespace Assignment2_S19
         // Complete the dayOfProgrammer function below.
         static string dayOfProgrammer(int year)
         {
+
             try
             {
                 string dd;
@@ -370,8 +371,8 @@ namespace Assignment2_S19
                 //check the year if it is a leap year
                 if (year / 4 == 0)
                 {
-                     dd = "12.";
-                     mm = "09.";
+                    dd = "12.";
+                    mm = "09.";
                     // returning the date in the given format.
                     return (String.Concat(dd, mm, year));
                 }
