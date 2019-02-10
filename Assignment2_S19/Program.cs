@@ -8,17 +8,18 @@ namespace Assignment2_S19
         static void Main(string[] args)
         {
             // left rotation
-            Console.WriteLine("Left Rotation");
+            Console.WriteLine("Left Rotation"); 
             int d = 4;
             int[] a = { 1, 2, 3, 4, 5 };
-            int[] r = rotLeft(a, d);
+            int[] r = rotLeft(a, d);            //Method call to rotate array a by d times.
             displayArray(r);
 
             // Maximum toys
             Console.WriteLine("\n\nMaximum toys");
             int k = 50;
             int[] prices = { 1, 12, 5, 111, 200, 1000, 10 };
-            Console.WriteLine(maximumToys(prices, k));
+            //Method call to find the maximum no of toys that can be brought using k amount.
+            Console.WriteLine(maximumToys(prices, k));   
 
             // Balanced sums
             Console.WriteLine("\n\nBalanced sums");
@@ -37,6 +38,7 @@ namespace Assignment2_S19
             // grading students
             Console.WriteLine("\n\nGrading students");
             int[] grades = { 73, 67, 38, 33 };
+            //Method call to re-grade student grades by rounding off qualified grades.
             int[] r3 = gradingStudents(grades);
             displayArray(r3);
 
@@ -54,6 +56,7 @@ namespace Assignment2_S19
             // Day of programmer
             Console.WriteLine("\n\nDay of Programmer");
             int year = 2017;
+            //Method call to print the 256th day of the programmer in mm.dd.yyy format.
             Console.WriteLine(dayOfProgrammer(year));
             Console.ReadLine();
 
@@ -118,18 +121,31 @@ namespace Assignment2_S19
         {
             try
             {
-                int maxToys = 0;
-                // Array.Sort(prices);
-                prices = sortthearray(prices);
-                for (int i = 0; i < prices.Length; i++)
+                //check if amount given is positive and array of prices is not empty
+                if (k > 0 && prices != null)
                 {
-                    if (prices[i] < k)
+                    int maxToys = 0;
+                    // sorting the prices in the array
+                    prices = sortthearray(prices);
+                    for (int i = 0; i < prices.Length; i++)
                     {
-                        maxToys++;
+                        //buying the toys in order of lowest priced first
+                        if (prices[i] < k)
+                        {
+                            //keeping track of number of toys brought
+                            maxToys++;
+                        }
+                        // subtracting the price of toys brought from the actual amount
+                        k = k - prices[i];
                     }
-                    k = k - prices[i];
+                    //return number of toys brought using the given amount.
+                    return maxToys;
                 }
-                return maxToys;
+                else
+                {
+                    //error msg to let the user know about negative amount.
+                    Console.WriteLine("enter correct amount");
+                }
             }
             catch
             {
@@ -172,7 +188,7 @@ namespace Assignment2_S19
             }
         }
 
-        // Complete the missingNumbers function below.
+        // Complete the missingNumbers function below
         static int[] missingNumbers(int[] arr, int[] brr)
         {
             int i = 0;
@@ -215,19 +231,36 @@ namespace Assignment2_S19
         {
             try
             {
+                //flag corner to check the corner cases
+                bool corner = true;
+                for (int i = 0; i < grades.Length; i++)
+                {
+                    //check if grades are above 100 or below 0.
+                    if (grades[i] > 100 || grades[i] < 0)
+                    {
+                        corner = false;
+                    }
+                }
                 for (int i = 0; i < grades.Length; i++)
                 {
                     int temp = 0;
-                    if (grades[i] >= 38)
-                    {
-                        temp = grades[i] / 5;
-                        if (((temp + 1) * 5) - grades[i] < 3)
+                        if (grades[i] >= 38)
                         {
-                            grades[i] = (temp + 1) * 5;
+                        //rounding off grades to nearest integer based on requirements.
+                            temp = grades[i] / 5;
+                            if (((temp + 1) * 5) - grades[i] < 3)
+                            {
+                                grades[i] = (temp + 1) * 5;
+                            }
                         }
                     }
+                if (corner == true)
+                    return grades;
+                else
+                {
+                    Console.WriteLine("grades greater than 100 or less than zero. check below grades:");
+                    return grades;
                 }
-                return grades;
             }
             catch
             {
@@ -275,19 +308,21 @@ namespace Assignment2_S19
             {
                 string dd;
                 string mm;
+                //check the year if it is a leap year
                 if (year / 4 == 0)
                 {
                      dd = "12.";
                      mm = "09.";
+                    // returning the date in the given format.
                     return (String.Concat(dd, mm, year));
                 }
                 else
                 {
                     dd = "13.";
                     mm = "09.";
+                    // returning the date in the given format.
                     return (String.Concat(dd, mm, year));
                 }
-
             }
             catch
             {
