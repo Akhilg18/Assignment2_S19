@@ -12,7 +12,7 @@ namespace Assignment2_S19
             Console.WriteLine("Left Rotation"); 
             int d = 4;
             int[] a = { 1, 2, 3, 4, 5 };
-            int[] r = rotLeft(a, d);            //Method call to rotate array a by d times.
+            int[] r = rotLeft(a, d);            //Method call to rotate array a by d times
             displayArray(r);
 
             // Maximum toys
