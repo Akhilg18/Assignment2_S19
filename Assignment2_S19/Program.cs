@@ -355,9 +355,35 @@ namespace Assignment2_S19
         }
 
         // Complete the closestNumbers function below.
-        static int[] closestNumbers(int[] arr)
+        static int[] closestNumbers(int[] a)
         {
-            return new int[] { };
+            List<int> result = new List<int>();
+            a = sortthearray(a);
+            int mindiff = Math.Abs(a[1] - a[0]);
+            int dif = mindiff;
+
+            for (int i = 0, j = 1; j < a.Length; i++, j++)
+            {
+                if ((dif = Math.Abs(a[j] - a[i])) <= mindiff)
+                {
+
+                    if (mindiff != dif) result.Clear();
+                    result.Add(a[i]);
+                    result.Add(a[j]);
+                    mindiff = dif;
+
+                }
+
+
+            }
+            int[] c = new int[result.Count];
+            int n = 0;
+            foreach (int value in result)
+            {
+                c[n] = value;
+                n++;
+            }
+            return c;
         }
 
         // Complete the dayOfProgrammer function below.
@@ -369,7 +395,7 @@ namespace Assignment2_S19
                 string dd;
                 string mm;
                 //check the year if it is a leap year
-                if (year / 4 == 0)
+                if (year % 400 == 0 || year % 4 == 0 && year % 100 != 0)
                 {
                     dd = "12.";
                     mm = "09.";
