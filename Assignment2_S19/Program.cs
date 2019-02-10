@@ -92,6 +92,17 @@ namespace Assignment2_S19
         // Complete the rotLeft function below.
         static int[] rotLeft(int[] a, int d)
         {
+            if(d<0)
+            {
+                Console.WriteLine("exitinf the function as the value d is less than zero");
+                return null;
+            }
+            if(a==null)
+            {
+                Console.WriteLine("exiting the function as the array is null");
+                return null;
+            }
+            
             try
             {   //initilizing n with the length of the array.
                 int n = a.Length;
@@ -161,6 +172,11 @@ namespace Assignment2_S19
         // Complete the balancedSums function below.
         static string balancedSums(List<int> arr)
         {
+            if(arr.Count==0)
+            {
+                Console.WriteLine("exiting the function as the array is null");
+                return null;
+            }
             try
             {   //looping through the array
                 for (int i = 0; i < arr.Count; i++)
@@ -311,6 +327,11 @@ namespace Assignment2_S19
         // Complete the findMedian function below.
         static int findMedian(int[] arr)
         {
+            if(arr.Length==0)
+            {
+                Console.WriteLine("exiting the function as the array is null");
+                return -1;
+            }
             try
             {   //sort the array
                 arr = sortthearray(arr);
