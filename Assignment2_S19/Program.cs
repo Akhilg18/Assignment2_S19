@@ -64,9 +64,17 @@ namespace Assignment2_S19
         }
 
         static void displayArray(int[] arr) {
-            Console.WriteLine();
-            foreach (int n in arr) {
-                Console.Write(n + " ");
+            try
+            {
+                Console.WriteLine();
+                foreach (int n in arr)
+                {
+                    Console.Write(n + " ");
+                }
+            }
+            catch {
+                Console.WriteLine("Exception occured while computing displayarray");
+
             }
         }
 
@@ -97,7 +105,7 @@ namespace Assignment2_S19
                 Console.WriteLine("exitinf the function as the value d is less than zero");
                 return null;
             }
-            if(a==null)
+            if(a.Length==0)
             {
                 Console.WriteLine("exiting the function as the array is null");
                 return null;
@@ -137,7 +145,8 @@ namespace Assignment2_S19
             try
             {
                 //check if amount given is positive and array of prices is not empty
-                if (k > 0 && prices != null)
+                //if (k > 0 && prices != null)
+                if(k>0 && prices.Length>0)
                 {
                     int maxToys = 0;
                     // sorting the prices in the array
@@ -159,7 +168,7 @@ namespace Assignment2_S19
                 else
                 {
                     //error msg to let the user know about negative amount.
-                    Console.WriteLine("enter correct amount");
+                    Console.WriteLine("check the input values");
                 }
             }
             catch
@@ -219,7 +228,6 @@ namespace Assignment2_S19
             int j = 0;
             int k = 0;
             //declaring current number and missing number
-            int currentnumber;
             int missingnumber;
 
             //sorting the arrays arr and brr.
@@ -233,15 +241,15 @@ namespace Assignment2_S19
             {
                 while (i < brr.Length)
                 {
-                    //Console.WriteLine(i);
-                    // Console.WriteLine(brr[i] + "  " + arr[i]);
-
+                    //checking if the value of the array brr is equal to arr
                     if (brr[i] == arr[j])
                     {
+                        // if yes then increment the position of arr and brr
                         i++;
                         j++;
                         if (j == arr.Length)
                         {
+                            //if the position of the arr reached the end print the remaining numbers of brr.
                             while (i < brr.Length)
                             {
                                 list.Add(brr[i]);
@@ -251,8 +259,9 @@ namespace Assignment2_S19
                         }
                     }
                     else
-                    {
+                    {// if the value of the array brr is not equal to arr then add the number to the list
                         missingnumber = brr[i];
+                        // add the missing number to the list.
                         list.Add(missingnumber);
                         i++;
                     }
@@ -262,10 +271,11 @@ namespace Assignment2_S19
             }
             catch
             {
-
+                Console.WriteLine("Exception occured while computing missingnumbers()" );
             }
             int[] c = new int[list.Count];
             int z = 0;
+            //looping through the elements of the list to add into the array.
             foreach (int num in list)
             {
                 c[z] = num;
@@ -273,6 +283,7 @@ namespace Assignment2_S19
 
             }
             int[] d = new int[c.Length];
+            //making the array distinct.
             d = c.Distinct().ToArray();
 
             return d;
@@ -386,7 +397,8 @@ namespace Assignment2_S19
             }
             catch
             {
-                Console.WriteLine("Exception occured while computing gradingStudents()");
+                //Console.WriteLine("Exception occured while computing gradingStudents()");
+                Console.WriteLine("Exception occured while computing day of programmer ");
             }
             return "";
         }
