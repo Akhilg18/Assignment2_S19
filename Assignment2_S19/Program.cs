@@ -46,10 +46,10 @@ namespace Assignment2_S19
             Console.WriteLine(findMedian(arr2));
 
             // closest numbers
-            Console.WriteLine("\n\nClosest numbers");
-            int[] arr3 = { 5, 4, 3, 2 };
-            int[] r4 = closestNumbers(arr3);
-            displayArray(r4);
+                Console.WriteLine("\n\nClosest numbers");
+                int[] arr3 = { 5, 4, 3, 2 };
+                int[] r4 = closestNumbers(arr3);
+                displayArray(r4);
 
             // Day of programmer
             Console.WriteLine("\n\nDay of Programmer");
