@@ -29,7 +29,7 @@ namespace Assignment2_S19
             int k = 50;
             int[] prices = { 1, 12, 5, 111, 200, 1000, 10 };
             //Method call to find the maximum no of toys that can be brought using k amount.
-            Console.WriteLine(maximumToys(prices, k));   
+            Console.WriteLine(maximumToys(prices, k));
 
             // Balanced sums
             Console.WriteLine("\n\nBalanced sums");
@@ -66,7 +66,6 @@ namespace Assignment2_S19
             // Day of programmer
             Console.WriteLine("\n\nDay of Programmer");
             int year = 2017;
-            //Method call to print the 256th day of the programmer in mm.dd.yyy format.
             Console.WriteLine(dayOfProgrammer(year));
             Console.ReadLine();
 
@@ -123,7 +122,7 @@ namespace Assignment2_S19
             try
             {   //initilizing n with the length of the array.
                 int n = a.Length;
-                d = d % 5;
+                d = d % a.Length;
                 //create a new array to return the left displaced elements.
                 int[] b = new int[a.Length];
                 //looping through the array elements.
@@ -187,47 +186,32 @@ namespace Assignment2_S19
             return 0;
         }
 
+  
         // Complete the balancedSums function below.
         static string balancedSums(List<int> arr)
         {
-            if(arr.Count==0)
+            int sum = 0, leftsum = 0;
+            for (int i = 0; i < arr.Count; ++i)
+                sum += arr[i];
+            for (int i = 0; i < arr.Count; ++i)
             {
-                Console.WriteLine("exiting the function as the array is null");
-                return null;
-            }
-            try
-            {   //looping through the array
-                for (int i = 0; i < arr.Count; i++)
-                {
 
-                    int leftsum = 0;
-                    int rightsum = 0;
-                    //loop to calculate the left sum at point of array
-                    for (int y = 0; y < i; y++)
-                    {   //saving the left sum in the variable leftsum
-                        leftsum = arr[y] + leftsum;
-                    }
-                    //loop to calculate the right sum at a point of array
-                    for (int z = i + 1; z < arr.Count; z++)
-                    {
-                        //saving the right sum in the variable rightsum
-                        rightsum = rightsum + arr[z];
-                    } //checking if left sum equal to right sum
-                    if (leftsum == rightsum)
-                    {
-                        return "YES";
-                    }
-                }
-                return "NO";
+                // sum is now right sum 
+                // for index i 
+                sum -= arr[i];
 
-            }
-            catch
-            {
-                Console.WriteLine("Exception occured while computing balanced sums");
-                return "EXCEPTION";
+                if (leftsum == sum)
+                    return "YES";
 
+                leftsum += arr[i];
             }
+
+            /* If no equilibrium index found,  
+            then return 0 */
+
+            return "NO";
         }
+
 
         // Complete the missingNumbers function below
         static int[] missingNumbers(int[] arr, int[] brr)
@@ -409,33 +393,33 @@ namespace Assignment2_S19
         // Complete the dayOfProgrammer function below.
         static string dayOfProgrammer(int year)
         {
-
-            try
+            if (year <= 1917)
             {
-                string dd;
-                string mm;
-                //check the year if it is a leap year
-                if (year % 400 == 0 || year % 4 == 0 && year % 100 != 0)
+                if (year % 4 == 0)
                 {
-                    dd = "12.";
-                    mm = "09.";
-                    // returning the date in the given format.
-                    return (String.Concat(dd, mm, year));
+                    return "12.09." + year;
                 }
                 else
                 {
-                    dd = "13.";
-                    mm = "09.";
-                    // returning the date in the given format.
-                    return (String.Concat(dd, mm, year));
+                    return "13.09." + year;
                 }
             }
-            catch
+            else if (year == 1918)
             {
-                //Console.WriteLine("Exception occured while computing gradingStudents()");
-                Console.WriteLine("Exception occured while computing day of programmer ");
+                return "26.09." + year;
             }
-            return "";
+            else
+            {
+                if (year % 400 == 0 || year % 4 == 0 && year % 100 != 0)
+                {
+                    return "12.09." + year;
+                }
+                else
+                {
+                    return "13.09." + year;
+                }
+            }
+
         }
     }
 }
